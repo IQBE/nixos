@@ -4,4 +4,4 @@ This repo contains my full NixOS configuration. The plan is to eventually have a
 ## TODO's
 - Configuring git
 - Adding and configuring other applications
-- Basically replicating my [dotfiles](https://github.com/IQBE/dotfiles) but in git
+- Basically replicating my [dotfiles](https://github.com/IQBE/dotfiles) but in nix
