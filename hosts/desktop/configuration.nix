@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, pkgsUnstable, inputs, ... }:
 
 {
   imports =
@@ -10,6 +10,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -47,10 +48,13 @@
     displayManager.gdm.enable = true;
   };
 
+  # Setting up drivers for my GTX 1070 Ti
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
+    nvidia.open = false;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -79,11 +83,21 @@
     };
   };
 
+  # Optimisations
+  nix = {
+    optimise.automatic = true;
+    optimise.dates = [ "00:00" ];
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
