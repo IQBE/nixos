@@ -76,12 +76,12 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "iqbe" = import ./home.nix;
-    };
-  };
+#  home-manager = {
+#    extraSpecialArgs = { inherit inputs; };
+#    users = {
+#      "iqbe" = import ./home.nix;
+#    };
+#  };
 
   # Optimisations
   nix = {
