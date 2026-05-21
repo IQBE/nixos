@@ -52,7 +52,7 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
-    nvidia.open = false;
+    nvidia.open = true;
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
