@@ -52,8 +52,9 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
-    nvidia.open = true;
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    graphics.enable32Bit = true;
+    nvidia.open = false;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 
   # Enable CUPS to print documents.
@@ -93,8 +94,6 @@
       options = "--delete-older-than 30d";
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # Install firefox.
   programs.firefox.enable = true;

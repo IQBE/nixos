@@ -14,15 +14,21 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
       system = "x86_64-linux";
-      #pkgs = nixpkgs.legacyPackages.${system};
-      #pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-      pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+
+      mkPkgs = pkg-input:
+        import pkg-input {
+	inherit system;
+	config.allowUnfree = true;
+	config.nvidia.acceptLicense = true;
+      };
+
+      pkgs = mkPkgs nixpkgs;
+      pkgsUnstable = mkPkgs nixpkgs-unstable;
     in
     {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs pkgs pkgsUnstable; };
+          specialArgs = { inherit inputs pkgsUnstable; };
           modules = [
             ./hosts/desktop/configuration.nix
             inputs.home-manager.nixosModules.default
