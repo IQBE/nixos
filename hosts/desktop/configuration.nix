@@ -48,13 +48,10 @@
     displayManager.gdm.enable = true;
   };
 
-  # Setting up drivers for my GTX 1070 Ti
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # Setting up drivers
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
-    nvidia.open = false;
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 
   # Enable CUPS to print documents.

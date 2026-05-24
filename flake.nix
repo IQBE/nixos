@@ -19,7 +19,6 @@
         import pkg-input {
 	inherit system;
 	config.allowUnfree = true;
-	config.nvidia.acceptLicense = true;
       };
 
       pkgs = mkPkgs nixpkgs;
