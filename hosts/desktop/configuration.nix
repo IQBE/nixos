@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
+      # inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -74,14 +74,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs pkgsUnstable; };
-    users = {
-      "iqbe" = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   extraSpecialArgs = { inherit inputs pkgsUnstable; };
+  #   users = {
+  #     "iqbe" = import ./home.nix;
+  #   };
+  # };
 
   # Optimisations
   nix = {
