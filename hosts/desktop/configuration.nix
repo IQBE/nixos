@@ -4,7 +4,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      # inputs.home-manager.nixosModules.home-manager
     ];
 
   # Bootloader.
@@ -74,14 +73,16 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # home-manager = {
-  #   useGlobalPkgs = true;
-  #   useUserPackages = true;
-  #   extraSpecialArgs = { inherit inputs pkgsUnstable; };
-  #   users = {
-  #     "iqbe" = import ./home.nix;
-  #   };
-  # };
+  nixpkgs.config.allowUnfree = true;
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs pkgsUnstable; };
+    users = {
+      "iqbe" = import ./home.nix;
+    };
+  };
 
   # Optimisations
   nix = {
@@ -107,22 +108,6 @@
     gamemode.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    alacritty
-    neovim
-    git
-    tmux
-    tree
-    tealdeer
-    fastfetch
-    zip
-    unzip
-    p7zip
-    gnutar
-    jq
-    fzf
-    curl
-  ];
 
   system.stateVersion = "25.11"; # Don't change!
 }

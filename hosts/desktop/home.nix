@@ -1,27 +1,14 @@
-{ config, pkgs, pkgsUnstable, ... }:
+{ config, pkgs, pkgsUnstable, self, ... }:
 
 {
+  imports = [
+    ../../modules/home
+  ];
+
   home.username = "iqbe";
   home.homeDirectory = "/home/iqbe";
   home.stateVersion = "25.11"; # Don't change!
 
-  home.packages =
-    (with pkgs; [
-      vscode
-
-      bottles
-      prismlauncher
-
-      gimp
-      inkscape
-
-      onlyoffice-desktopeditors
-    ])
-
-    ++ (with pkgsUnstable; [
-      discord
-      spotify
-    ]);
 
   home.file = { };
 
