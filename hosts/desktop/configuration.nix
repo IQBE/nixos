@@ -74,12 +74,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-#  home-manager = {
-#    extraSpecialArgs = { inherit inputs; };
-#    users = {
-#      "iqbe" = import ./home.nix;
-#    };
-#  };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs pkgsUnstable; };
+    users = {
+      "iqbe" = import ./home.nix;
+    };
+  };
 
   # Optimisations
   nix = {
@@ -92,22 +94,35 @@
     };
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # Install programs and packages
+  programs = {
+    firefox.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      extraCompatPackages = with pkgsUnstable; [
+        proton-ge-bin
+      ];
+    };
+    gamemode.enable = true;
+  };
 
-  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    alacritty
     neovim
     git
-
-    # TODO: Move to flake
     tmux
-    alacritty
-    tldr
     tree
-    stow
-    python3
+    tealdeer
+    fastfetch
+    zip
+    unzip
+    p7zip
+    gnutar
+    jq
+    fzf
+    curl
   ];
 
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Don't change!
 }

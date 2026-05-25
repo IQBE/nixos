@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -30,7 +30,7 @@
           specialArgs = { inherit inputs pkgsUnstable; };
           modules = [
             ./hosts/desktop/configuration.nix
-            inputs.home-manager.nixosModules.default
+            home-manager.nixosModules.home-manager
           ];
         };
       };
