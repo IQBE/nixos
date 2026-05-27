@@ -3,7 +3,6 @@
   home.packages =
     (with pkgs; [
       neovim
-      git
       tmux
       tree
       tealdeer
@@ -15,6 +14,7 @@
       jq
       fzf
       curl
+      gnupg
 
       vscode
 

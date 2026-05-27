@@ -3,7 +3,7 @@
 {
   imports = [
     ./programs
-    #./tui
+    ./tui
     ./packages.nix
   ];
 }

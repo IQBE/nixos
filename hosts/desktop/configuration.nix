@@ -97,6 +97,7 @@
 
   # Install programs and packages
   programs = {
+    gnupg.agent.enable = true;
     firefox.enable = true;
     steam = {
       enable = true;
@@ -107,6 +108,10 @@
     };
     gamemode.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    gnupg
+  ];
 
 
   system.stateVersion = "25.11"; # Don't change!
