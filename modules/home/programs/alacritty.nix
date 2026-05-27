@@ -1,4 +1,9 @@
 { pkgs, ... }:
+let
+  iqbe-theme = builtins.fromJSON (builtins.readFile ../iqbe-theme.json);
+  iqbe-colors = iqbe-theme.colors;
+  iqbe-fonts = iqbe-theme.fonts;
+in
 {
   programs.alacritty = {
     enable = true;
@@ -14,13 +19,28 @@
         startup_mode = "Maximized";
       };
 
-      font.size = 15.0;
-      font.normal.family = "FiraCode Nerd Font Mono";
-      font.normal.style = "Retina";
-      font.bold.family = "FiraCode Nerd Font Mono";
-      font.bold.style = "Bold";
-      font.italic.family = "FiraMono";
-      font.italic.style = "Medium Italic";
+      colors = {
+        primary = iqbe-colors.primary;
+        cursor = iqbe-colors.cursor;
+        normal = iqbe-colors.normal;
+        bright = iqbe-colors.bright;
+      };
+
+      font = {
+      	size = 15.0;
+	normal = {
+	  family = iqbe-fonts.fira-code.font-name;
+	  style = iqbe-fonts.fira-code.variations.retina;
+	};
+	bold = {
+	  family = iqbe-fonts.fira-code.font-name;
+	  style = iqbe-fonts.fira-code.variations.bold;
+	};
+	italic = {
+	  family = iqbe-fonts.fira-mono.font-name;
+	  style = iqbe-fonts.fira-mono.variations.italic;
+	};
+      };
     };
   };
 
