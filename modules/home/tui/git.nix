@@ -8,11 +8,11 @@
       user = {
         name = "Ilya Quateau";
         email = "git@quateau.net";
+        signingkey = "97C047EC0FE0A3F150E4CE39D27EA2E824BD4C5E";
       };
 
       signing = {
         format = "gpg";
-        key = "97C047EC0FE0A3F150E4CE39D27EA2E824BD4C5E";
         signByDefault = true;
       };
 
@@ -49,6 +49,13 @@
 	updateRefs = true;
       };
 
+      alias = {
+          lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+          deep-blame = "blame -C -C -C";
+          wdiff = "diff --word-diff";
+          blame = "blame -w";
+      };
+
       fetch.writeCommitGraph = true;
       init.defaultBranch = "main";
       pager.diff = "less";
@@ -56,21 +63,6 @@
       branch.sort = "-committerdate";
       rerere.enabled = true;
       color.ui = "auto";
-
-
-      gpg.format = "ssh";
     };
   };
 }
-# OLD CONFIG
-# [gpg "ssh"]
-#     allowedSignersFile = ~/.config/git/allowed_signers
-# 
-# [alias]
-#   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-#   deep-blame = blame -C -C -C
-#   wdiff = diff --word-diff
-#   blame = blame -w
-# 
-# [include]
-#   path = ~/.config/git/local-config
