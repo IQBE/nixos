@@ -9,9 +9,14 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nvf, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -31,6 +36,7 @@
           modules = [
             ./hosts/desktop/configuration.nix
             home-manager.nixosModules.home-manager
+	    nvf.nixosModules.default
           ];
         };
       };

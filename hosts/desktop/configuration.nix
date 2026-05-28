@@ -4,6 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/nixos
     ];
 
   # Bootloader.
@@ -11,7 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
 
-  networking.hostName = "nixos";
+  networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -73,8 +74,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -83,6 +82,8 @@
       "iqbe" = import ./home.nix;
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Optimisations
   nix = {
@@ -94,25 +95,6 @@
       options = "--delete-older-than 30d";
     };
   };
-
-  # Install programs and packages
-  programs = {
-    gnupg.agent.enable = true;
-    firefox.enable = true;
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      extraCompatPackages = with pkgsUnstable; [
-        proton-ge-bin
-      ];
-    };
-    gamemode.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    gnupg
-  ];
-
 
   system.stateVersion = "25.11"; # Don't change!
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, pkgsUnstable, self, ... }:
+{ ... }:
 
 {
   imports = [
@@ -13,7 +13,6 @@
   home.file = { };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
     SUDO_EDITOR = "nvim";
   };
 

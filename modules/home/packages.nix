@@ -2,20 +2,6 @@
 {
   home.packages =
     (with pkgs; [
-      neovim
-      tmux
-      tree
-      tealdeer
-      fastfetch
-      zip
-      unzip
-      p7zip
-      gnutar
-      jq
-      fzf
-      curl
-      gnupg
-
       vscode
 
       bottles
