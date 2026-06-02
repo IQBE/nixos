@@ -1,6 +1,7 @@
 {
   imports = [
     ./nvf.nix
-    # ./custom-theme.nix
+    ./custom-theme.nix
+    ./options.nix
   ];
 }

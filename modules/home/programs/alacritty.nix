@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  iqbe-theme = builtins.fromJSON (builtins.readFile ../iqbe-theme.json);
+  iqbe-theme = builtins.fromJSON (builtins.readFile ../../iqbe-theme.json);
   iqbe-colors = iqbe-theme.colors;
   iqbe-fonts = iqbe-theme.fonts;
 in
