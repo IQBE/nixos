@@ -59,6 +59,13 @@
     };
   };
 
+  # Setting up main storage drive
+  fileSystems."/mnt/MainStorage" = {
+    device = "/dev/disk/by-uuid/5770f73c-bcd9-4293-8cea-ac3d137039e6";
+    fsType = "btrfs";
+    options = [ "defaults" "nofail" ];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
