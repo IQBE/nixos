@@ -49,9 +49,14 @@
   };
 
   # Setting up drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
+    nvidia = {
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+    };
   };
 
   # Enable CUPS to print documents.
