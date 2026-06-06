@@ -15,6 +15,12 @@
       fzf
       curl
       gnupg
+      ffmpeg
+      poppler
+      fd
+      ripgrep
+      resvg
+      _7zz-rar
     ]);
     # ++ (with pkgsUnstable; []);
 }

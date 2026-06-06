@@ -1,4 +1,5 @@
 { pkgs, pkgsUnstable, ... }:
+
 {
   home.packages =
     (with pkgs; [
@@ -9,6 +10,7 @@
 
       gimp
       inkscape
+      freecad
 
       onlyoffice-desktopeditors
     ])
