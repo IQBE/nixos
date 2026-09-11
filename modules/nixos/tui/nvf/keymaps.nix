@@ -64,14 +64,6 @@
         silent = true;
         action = "<C-b>zz";
       }
-
-      # Plugins
-      {
-        mode = "n";
-        key = "<C-b>";
-        silent = true;
-        action = "<C-b>zz";
-      }
     ];
   };
 }
