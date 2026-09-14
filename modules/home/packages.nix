@@ -4,6 +4,7 @@
   home.packages =
     (with pkgs; [
       vscode
+      filezilla
 
       bottles
       prismlauncher
