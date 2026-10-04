@@ -39,6 +39,14 @@
           nvf.nixosModules.default
         ];
       };
+      laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs pkgsUnstable; };
+        modules = [
+          ./hosts/laptop/configuration.nix
+          home-manager.nixosModules.home-manager
+          nvf.nixosModules.default
+        ];
+      };
     };
   };
 }
