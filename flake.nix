@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.gz";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -14,7 +14,6 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-  };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nvf, ... }@inputs:
   let
