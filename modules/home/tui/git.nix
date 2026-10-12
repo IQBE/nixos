@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # Git only dependecies
+  programs.delta.enable = true;
+
   programs.git = {
     enable = true;
 
@@ -18,8 +21,10 @@
 
       core = {
         autocrlf = "input";
-	safecrlf = false;
-	whitespace = "warn,trailing-space,space-before-tab,tab-in-indent,cr-at-eol";
+        editor = "nvim";
+        pager = "delta";
+        safecrlf = false;
+        whitespace = "warn,trailing-space,space-before-tab,tab-in-indent,cr-at-eol";
       };
 
       blame = {
@@ -29,16 +34,16 @@
 
       status = {
         branch = true;
-	short = true;
-	showStash = true;
-	showUntrackedFiles = "all";
+        short = true;
+        showStash = true;
+        showUntrackedFiles = "all";
       };
 
       push = {
         default = "current";
-	gpgsign = "if-asked";
+        gpgsign = "if-asked";
       };
-      
+
       tag = {
         gpgsign = true;
         sort = "-taggerdate";
@@ -46,7 +51,7 @@
 
       rebase = {
         autoStash = true;
-	updateRefs = true;
+        updateRefs = true;
       };
 
       alias = {
@@ -56,13 +61,23 @@
           blame = "blame -w";
       };
 
+      delta = {
+        dark = true;
+        line-numbers = true;
+        navigate = true;
+      };
+
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+
       fetch.writeCommitGraph = true;
       init.defaultBranch = "main";
-      pager.diff = "less";
       commit.gpgsign = true;
       branch.sort = "-committerdate";
       rerere.enabled = true;
       color.ui = "auto";
+      merge.conflictStyle = "zdiff3";
     };
   };
 }
