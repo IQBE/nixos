@@ -1,11 +1,16 @@
-{ config, pkgs, pkgsUnstable, inputs, ... }:
+{
+  config,
+  pkgs,
+  pkgsUnstable,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -33,7 +38,10 @@
     LC_TIME = "nl_BE.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable the X11 windowing system.
   services = {
@@ -63,7 +71,10 @@
   fileSystems."/mnt/MainStorage" = {
     device = "/dev/disk/by-uuid/5770f73c-bcd9-4293-8cea-ac3d137039e6";
     fsType = "btrfs";
-    options = [ "defaults" "nofail" ];
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   # Enable CUPS to print documents.
@@ -83,7 +94,10 @@
   users.users.iqbe = {
     isNormalUser = true;
     description = "IQBE";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   home-manager = {

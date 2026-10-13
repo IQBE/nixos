@@ -16,37 +16,47 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nvf, ... }@inputs:
-  let
-    system = "x86_64-linux";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nvf,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
 
-    mkPkgs = pkg-input:
-    import pkg-input {
-      inherit system;
-      config.allowUnfree = true;
-    };
+      mkPkgs =
+        pkg-input:
+        import pkg-input {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
-    pkgs = mkPkgs nixpkgs;
-    pkgsUnstable = mkPkgs nixpkgs-unstable;
-  in
-  {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgsUnstable; };
-        modules = [
-          ./hosts/desktop/configuration.nix
-          home-manager.nixosModules.home-manager
-          nvf.nixosModules.default
-        ];
+      pkgs = mkPkgs nixpkgs;
+      pkgsUnstable = mkPkgs nixpkgs-unstable;
+    in
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs pkgsUnstable; };
+          modules = [
+            ./hosts/desktop/configuration.nix
+            home-manager.nixosModules.home-manager
+            nvf.nixosModules.default
+          ];
+        };
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs pkgsUnstable; };
+          modules = [
+            ./hosts/laptop/configuration.nix
+            home-manager.nixosModules.home-manager
+            nvf.nixosModules.default
+          ];
+        };
       };
-      laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgsUnstable; };
-        modules = [
-          ./hosts/laptop/configuration.nix
-          home-manager.nixosModules.home-manager
-          nvf.nixosModules.default
-        ];
-      };
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
     };
-  };
 }

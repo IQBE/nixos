@@ -27,19 +27,19 @@ in
       };
 
       font = {
-      	size = 15.0;
-	normal = {
-	  family = iqbe-fonts.fira-code.font-name;
-	  style = iqbe-fonts.fira-code.variations.retina;
-	};
-	bold = {
-	  family = iqbe-fonts.fira-code.font-name;
-	  style = iqbe-fonts.fira-code.variations.bold;
-	};
-	italic = {
-	  family = iqbe-fonts.fira-mono.font-name;
-	  style = iqbe-fonts.fira-mono.variations.italic;
-	};
+        size = 15.0;
+        normal = {
+          family = iqbe-fonts.fira-code.font-name;
+          style = iqbe-fonts.fira-code.variations.retina;
+        };
+        bold = {
+          family = iqbe-fonts.fira-code.font-name;
+          style = iqbe-fonts.fira-code.variations.bold;
+        };
+        italic = {
+          family = iqbe-fonts.fira-mono.font-name;
+          style = iqbe-fonts.fira-mono.variations.italic;
+        };
       };
     };
   };

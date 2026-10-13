@@ -17,7 +17,10 @@
         action = ">gv";
       }
       {
-        mode = ["v" "n"];
+        mode = [
+          "v"
+          "n"
+        ];
         key = "<Leader>y";
         silent = true;
         action = ''"+y'';
@@ -29,13 +32,19 @@
         action = ''"+Y'';
       }
       {
-        mode = ["v" "n"];
+        mode = [
+          "v"
+          "n"
+        ];
         key = "<Leader>p";
         silent = true;
         action = ''"+p'';
       }
       {
-        mode = ["v" "n"];
+        mode = [
+          "v"
+          "n"
+        ];
         key = "<Leader>P";
         silent = true;
         action = ''"+P'';

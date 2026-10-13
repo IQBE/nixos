@@ -1,11 +1,16 @@
-{ config, pkgs, pkgsUnstable, inputs, ... }:
+{
+  config,
+  pkgs,
+  pkgsUnstable,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../modules/nixos
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -33,7 +38,10 @@
     LC_TIME = "nl_BE.UTF-8";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable the X11 windowing system.
   services = {
@@ -65,8 +73,8 @@
           enable = true;
           enableOffloadCmd = true;
         };
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
       };
     };
   };
@@ -88,7 +96,10 @@
   users.users.iqbe = {
     isNormalUser = true;
     description = "IQBE";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   home-manager = {

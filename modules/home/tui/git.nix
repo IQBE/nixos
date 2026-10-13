@@ -55,10 +55,10 @@
       };
 
       alias = {
-          lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-          deep-blame = "blame -C -C -C";
-          wdiff = "diff --word-diff";
-          blame = "blame -w";
+        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+        deep-blame = "blame -C -C -C";
+        wdiff = "diff --word-diff";
+        blame = "blame -w";
       };
 
       delta = {

@@ -9,7 +9,6 @@
   home.homeDirectory = "/home/iqbe";
   home.stateVersion = "25.11"; # Don't change!
 
-
   home.file = { };
 
   home.sessionVariables = {
