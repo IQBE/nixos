@@ -3,7 +3,6 @@
 {
   home.packages =
     (with pkgs; [
-      vscode
       filezilla
 
       bottles
@@ -16,6 +15,7 @@
       onlyoffice-desktopeditors
     ])
     ++ (with pkgsUnstable; [
+      vscode
       discord
       spotify
     ]);
