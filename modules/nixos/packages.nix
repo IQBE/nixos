@@ -21,8 +21,7 @@
       ripgrep
       resvg
       _7zz-rar
-    ])
-    ++ (with pkgsUnstable; [
-      claude-code
     ]);
+#    ++ (with pkgsUnstable; [
+#    ]);
 }
