@@ -1,8 +1,9 @@
 { pkgs, pkgsUnstable, ... }:
 
 {
-  environment.systemPackages =
-    (with pkgs; [
+  environment.systemPackages = (
+    with pkgs;
+    [
       tmux
       tree
       tealdeer
@@ -21,7 +22,8 @@
       ripgrep
       resvg
       _7zz-rar
-    ]);
-#    ++ (with pkgsUnstable; [
-#    ]);
+    ]
+  );
+  #    ++ (with pkgsUnstable; [
+  #    ]);
 }
