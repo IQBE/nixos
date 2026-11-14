@@ -18,5 +18,6 @@
       vscode
       discord
       spotify
+      orca-slicer
     ]);
 }
